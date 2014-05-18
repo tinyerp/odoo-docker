@@ -33,7 +33,7 @@ Usage:
 
 Other images are listed on [index.docker.io][1]
 
-Note: no trusted images because of [bug #5892][4]
+Note: no trusted images because of [Docker bug #5892][4]
 
   [1]: https://index.docker.io/u/tinyerp/
   [2]: http://docs.docker.io/en/latest/ "docs.docker.io"
