@@ -2,7 +2,7 @@
 # TO tinyerp/debian-openerp-8.0
 FROM tinyerp/debian-postgresql-9.3
 
-MAINTAINER Florent Xicluna, @florentxicluna
+# MAINTAINER Florent Xicluna, @florentxicluna
 
 # Install "openerp.deb"
 # Create PostgreSQL user "openerp"
