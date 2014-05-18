@@ -2,11 +2,9 @@
 # TO tinyerp/sandbox-postgresql
 FROM tinyerp/debian-postgresql-9.3
 
-
 # Create PostgreSQL user "openerp"
 # Untar configuration "/etc/supervisor/conf.d/"
 RUN export DEBIAN_FRONTEND=noninteractive LANG=en_US.UTF-8 \
- && mkdir ~openerp && chown openerp:openerp ~openerp \
  && service postgresql start && su - postgres -c "createuser -d openerp" \
  && echo H4sIAHk6WlMCA+2UTU+DQBCGOfMrNj0LCxSWaNKDiY0e/Eg0noxpKGxxE9jF5eP3OxCq \
  FGvSg5hg5rkA7yztbHee2tSYHAcIg6C7AuNrd+96S495zPfcEHLmstAggTEjxpubCTYtVFmlmpfv \
@@ -16,6 +14,6 @@ RUN export DEBIAN_FRONTEND=noninteractive LANG=en_US.UTF-8 \
  bLGpKrjkuphK/pP8H/7/M/Df8T0H/f9T//sx+CZ/a3pfs8DHBpQEnzuH+3hUPnC3L5lcNkIrmXPZ \
  mvr8tH5cLfra4uz24fr+8m49SG4e2kf6pnK+//TFL+t/2PRp1o82Om/zEQRBEARBEARBEARBEARB \
  EARBEARBkP/EB0y9pT8AKAAA \
-  | base64 -di | tar xz -C /etc/supervisor/conf.d
+  | base64 -di | tar xz -C /var/tmp
 
 CMD ["/bin/bash"]
