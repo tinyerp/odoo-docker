@@ -1,6 +1,5 @@
 Run OpenERP on Debian - May 2014
-
-*Built with Docker 0.11.1*
+--------------------------------
 
 Features:
 

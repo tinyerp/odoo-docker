@@ -1,6 +1,5 @@
-Run OpenERP on Ubuntu - April 2014
-
-*Built with Docker 0.11.1*
+Run OpenERP on Ubuntu - May 2014
+--------------------------------
 
 Features:
 
