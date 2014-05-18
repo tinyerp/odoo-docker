@@ -2,7 +2,7 @@ Docker images for Odoo / OpenERP
 ================================
 
 
-This repository provides trusted (but unofficial) Dockerfiles for OpenERP.
+This repository provides ~~trusted~~ Dockerfiles for OpenERP.
 
 Built images are uploaded to [index.docker.io][1]
 
@@ -25,7 +25,7 @@ Usage:
 
  - Install Docker: [http://docs.docker.io/][2]
  - Execute
- `docker run -d --name openerp -p 8069:8069 tinyerp/debian-openerp-7.0`
+ `docker run -d --name openerp -p 8069:8069 tinyerp/debian-openerp`
  - Browse [http://&lt;your server ip address&gt;:8069/][3]
  - Stop and start again
    - `docker stop openerp`
@@ -33,6 +33,9 @@ Usage:
 
 Other images are listed on [index.docker.io][1]
 
+Note: no trusted images because of [bug #5892][4]
+
   [1]: https://index.docker.io/u/tinyerp/
   [2]: http://docs.docker.io/en/latest/ "docs.docker.io"
   [3]: http://127.0.0.1:8069/
+  [4]: https://github.com/dotcloud/docker/issues/5892
