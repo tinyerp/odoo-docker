@@ -1,8 +1,6 @@
 # DOCKER-VERSION 0.11.1
-# TO tinyerp/debian-openerp-6.1
+# TO tinyerp/debian-openerp:6.1
 FROM tinyerp/debian-postgresql-9.3
-
-MAINTAINER Florent Xicluna, @florentxicluna
 
 # Install "openerp.deb"
 # Create PostgreSQL user "openerp"
@@ -22,6 +20,9 @@ RUN echo deb http://nightly.odoo.com/6.1/nightly/deb/ ./ \
  mvr8tH5cLfra4uz24fr+8m49SG4e2kf6pnK+//TFL+t/2PRp1o82Om/zEQRBEARBEARBEARBEARB \
  EARBEARBkP/EB0y9pT8AKAAA \
   | base64 -di | tar xz -C /etc/supervisor/conf.d
+
+# Declare volumes for PostgreSQL data and logs
+VOLUME ["/var/lib/postgresql", "/var/log/postgresql"]
 
 # Expose HTTP port
 EXPOSE 8069
