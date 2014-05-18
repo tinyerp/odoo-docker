@@ -36,9 +36,6 @@ RUN echo deb http://nightly.odoo.com/6.1/nightly/deb/ ./ \
  EARBEARBkP/EB0y9pT8AKAAA \
   | base64 -di | tar xz -C /etc/supervisor/conf.d
 
-# Declare volumes for PostgreSQL data and logs
-VOLUME ["/var/lib/postgresql", "/var/log/postgresql"]
-
 # Expose HTTP port
 EXPOSE 8069
 
