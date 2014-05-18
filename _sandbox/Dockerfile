@@ -1,10 +1,13 @@
 # DOCKER-VERSION 0.11.1
-# TO tinyerp/sandbox-postgresql
-FROM tinyerp/debian-postgresql-9.3
+FROM ubuntu:14.04
 
-# Create PostgreSQL user "openerp"
-# Untar configuration "/etc/supervisor/conf.d/"
-RUN export LANG=en_US.UTF-8 \
- && pg_ctlcluster 9.3 main start -- -w && pg_ctlcluster 9.3 main stop
+RUN mv /usr/bin/ischroot /usr/bin/chroot.orig \
+ && ln -s /bin/true /usr/bin/ischroot \
+ && export DEBIAN_FRONTEND=noninteractive LANG && apt-get update \
+ && apt-get install -y --no-install-recommends language-pack-en \
+ && update-locale LANG=en_US.UTF-8 && . /etc/default/locale \
+ && apt-get install -y postgresql-9.3
 
-CMD ["/bin/bash"]
+RUN pg_ctlcluster 9.3 main start && pg_ctlcluster 9.3 main stop
+
+CMD ["/bin/bash", "--login"]
