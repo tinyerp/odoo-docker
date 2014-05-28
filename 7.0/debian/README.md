@@ -1,1 +1,1 @@
-../../trunk/debian/README.md
+../../trunk-src/debian/README.md
