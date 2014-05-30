@@ -1,6 +1,6 @@
 # DOCKER-VERSION 0.11.1
 # TO tinyerp/ubuntu-openerp:8.0
-FROM tinyerp/ubuntu-postgresql-9.3
+FROM tinyerp/ubuntu-postgresql:9.3
 
 # Install tarball from master branch on GitHub
 # Create PostgreSQL user "odoo"
@@ -12,8 +12,9 @@ RUN export DEBIAN_FRONTEND=noninteractive LANG=en_US.UTF-8 \
     python-reportlab python-simplejson python-yaml wget wkhtmltopdf \
  && adduser --system --group --home /var/lib/odoo --shell /bin/sh odoo \
  && pg_ctlcluster 9.3 main start && su - postgres -c "createuser -d odoo" \
- && wget -nv -O- https://github.com/odoo/odoo/archive/master.tar.gz | tar xz \
-    -C /opt && mv /opt/odoo-master /opt/odoo && pip install -e /opt/odoo \
+ && wget -nv -O- https://github.com/odoo/odoo/archive/master.tar.gz \
+  | tar xz -C /opt && mv /opt/odoo-master /opt/odoo \
+ && ln -s setup/setup.py /opt/odoo && pip install -e /opt/odoo \
  && echo H4sIACwkhVMCA+2XXW+bMBiFueZXoF4nGBM+tEi5qLSuq7QlUqtpF1OFKLjUWrCZDam0X \
  7/XtDQ0omovEtpo73MRwzFWDMfHHy6xDo7neX4chqakcej1yw6L+rOA+jSKAh/0yKex5YTWEdG9SF \
  ceCS6RuZRkLP+ffaIh/2eB0WPqe+j/iP6bn6lmasOUm0lxu/dPEwXBi/7TONj678M4gYswshwL/T8 \
