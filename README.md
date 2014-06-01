@@ -16,6 +16,7 @@ Main images:
 
 PostgreSQL images:
  - PostgreSQL 9.3 on Debian/Ubuntu
+ - PostgreSQL 9.4 beta on Debian
 
 
 Usage:
