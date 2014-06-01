@@ -12,12 +12,12 @@ Content:
 
 Images available:
 
- - `tinyerp/debian-postgresql:9.3` (same as) `tinyerp/debian-postgresql:latest`
+ - `tinyerp/debian-postgresql:9.3` (same as) `:latest`
  - `tinyerp/debian-postgresql:9.4`
 
 Note: the default SSH `root` password is ... `password`.
 
-(these are the base images for `tinyerp/debian-odoo-*` builds)
+(these are the base images for `tinyerp/debian-odoo` builds)
 
 Source repository:
  - [https://github.com/tinyerp/odoo-docker][1]
