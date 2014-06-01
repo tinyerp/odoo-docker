@@ -1,11 +1,20 @@
-Install PostgreSQL 9.3 on Ubuntu - May 2014
--------------------------------------------
+Run PostgreSQL 9.3 on Ubuntu - June 2014
+----------------------------------------
+
+Base image is Ubuntu 14.04 LTS (Trusty Tahr)
 
 Content:
 
-* Installs PostgreSQL 9.3 on Ubuntu 14.04 LTS (Trusty Tahr).
-* Installs Supervisor.
+* Install Dropbear SSH Server
+* Install PostgreSQL 9.3
+* Install Supervisor
+* Run SSH server and PostgreSQL server on startup
 
-Note: nothing is configured.
+Note: the default SSH `root` password is ... `password`.
 
-(this is the base image for `tinyerp/ubuntu-openerp-*` builds)
+(these are the base images for `tinyerp/ubuntu-odoo` builds)
+
+Source repository:
+ - [https://github.com/tinyerp/odoo-docker][1]
+
+  [1]: https://github.com/tinyerp/odoo-docker

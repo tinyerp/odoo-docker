@@ -1,5 +1,5 @@
-Run OpenERP on Ubuntu - May 2014
---------------------------------
+Run OpenERP on Ubuntu - June 2014
+---------------------------------
 
 *Built with Docker 0.11.1*
 
@@ -8,6 +8,7 @@ Features:
  - Ubuntu 14.04 LTS (Trusty Tahr)
  - PostgreSQL 9.3
  - OpenERP 7.0 (or trunk)
+ - SSH server
  - Supervisor
 
 (Debian build : [tinyerp/debian-openerp][1])
@@ -22,10 +23,16 @@ Usage:
    - `docker stop openerp`
    - `docker start openerp`
 
+Manhole access:
+
+ 1. `OPENERP_IP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' openerp)`
+ 2. `ssh-keygen -R $OPENERP_IP` (because Docker assigns the same IP to different hosts)
+ 3. `ssh root@$OPENERP_IP -p 22` (default password `password`)
+
 Images available:
 
- - `tinyerp/ubuntu-openerp:7.0` (same as) `tinyerp/ubuntu-openerp:latest`
- - `tinyerp/ubuntu-openerp:8.0`
+ - `tinyerp/ubuntu-openerp:7.0` (same as) `tinyerp/ubuntu-openerp`
+ - `tinyerp/ubuntu-openerp:8.0` (same as) `tinyerp/ubuntu-odoo`
 
 Source repository:
  - [https://github.com/tinyerp/odoo-docker][4]
