@@ -1,31 +1,25 @@
 # DOCKER-VERSION 0.11.1
 # TO tinyerp/debian-openerp:6.1
-FROM tinyerp/debian-postgresql-9.3
+FROM tinyerp/debian-postgresql:9.3
 
 # Install "openerp.deb"
 # Create PostgreSQL user "openerp"
-# Untar configuration "/etc/supervisor/conf.d/"
+# Untar configuration "/etc/supervisor/conf.d/openerp.conf"
 RUN echo deb http://nightly.odoo.com/6.1/nightly/deb/ ./ \
     > /etc/apt/sources.list.d/openerp-61.list \
  && export DEBIAN_FRONTEND=noninteractive LANG=en_US.UTF-8 \
  && apt-get update && apt-get install -y --allow-unauthenticated openerp \
  && mkdir ~openerp && chown openerp:openerp ~openerp \
  && service postgresql start && su - postgres -c "createuser -d openerp" \
- && echo H4sIAHk6WlMCA+2UTU+DQBCGOfMrNj0LCxSWaNKDiY0e/Eg0noxpKGxxE9jF5eP3OxCq \
- FGvSg5hg5rkA7yztbHee2tSYHAcIg6C7AuNrd+96S495zPfcEHLmstAggTEjxpubCTYtVFmlmpfv \
- mR0ruZvop2G+/+P5Bw6D8/fCIGSeF0Duui4LDGLg+U/OS6FVqqP84msMXs1Y5XkkE7IitC41zcR2 \
- MCX03F7SrZCfEbGuCG2io+vySEhixaSdLJFudiLjK8qr+Ni68SSadck19LCPzaiu4DbSFYSVrnkX \
- QGEYaZ4IzeNqU1YJ13ofFyJpv7vdUdupruWoA6vtwIZlJryo6mqTqXT4BjzSsi64bkSp9LBVqJjG \
- bLGpKrjkuphK/pP8H/7/M/Df8T0H/f9T//sx+CZ/a3pfs8DHBpQEnzuH+3hUPnC3L5lcNkIrmXPZ \
- mvr8tH5cLfra4uz24fr+8m49SG4e2kf6pnK+//TFL+t/2PRp1o82Om/zEQRBEARBEARBEARBEARB \
- EARBEARBkP/EB0y9pT8AKAAA \
+ && echo H4sIACx6i1MCA+3SwUrDQBAG4JzzFHkA66ZN2oLQg4eiB7WgeBIpMZnWQLMTZnfz/E5j \
+ Ipi7YOH/Lsv8P1kysNySJWmvS7aH6I+kapXn/ammZ5pnaTRfZPlitc7Xy2WUztNM6yS6JNPlLsRb \
+ K3yUornh74fwHpfcNIWtkk1ighPzUVszdDNH0pEkszIx5MsxntT9U4qDDnrFUMVku1rYNmS9pq8v \
+ 2+fNUF097O6ebh+3P/P9TgfzyQ2NF8dF8Ox8IedvvQTqA6FfkVBVC5V+73xFImOsEwe/P/HxUJ/o \
+ vFRXiNHRuNDq/9aOZbqAtnEEAAAAAAAAAAAAAAAAAAAAAADwz30BmbMKRgAoAAA=             \
   | base64 -di | tar xz -C /etc/supervisor/conf.d
 
-# Declare volumes for PostgreSQL data and logs
-VOLUME ["/var/lib/postgresql", "/var/log/postgresql"]
+# Declare volumes for data
+VOLUME ["/var/lib/openerp", "/var/lib/postgresql"]
 
 # Expose HTTP port
 EXPOSE 8069
-
-# Autostart supervisor daemon
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]

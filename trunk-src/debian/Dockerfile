@@ -1,38 +1,33 @@
 # DOCKER-VERSION 0.11.1
+# TO tinyerp/debian-odoo
 # TO tinyerp/debian-openerp:8.0
 FROM tinyerp/debian-postgresql:9.3
 
 # Install tarball from master branch on GitHub
 # Create PostgreSQL user "odoo"
-# Untar configuration "/etc/supervisor/conf.d/" and "/etc/odoo/"
+# Untar configuration "/etc/supervisor/conf.d/odoo.conf"
+# and "/etc/odoo/odoo-server.conf"
 RUN export DEBIAN_FRONTEND=noninteractive LANG=en_US.UTF-8 \
  && apt-get install -y --no-install-recommends python-geoip python-gevent \
     python-ldap python-lxml python-markupsafe python-pil python-pip \
     python-psutil python-psycopg2 python-pychart python-pydot \
     python-reportlab python-simplejson python-yaml wget wkhtmltopdf \
- && adduser --system --group --home /var/lib/odoo --shell /bin/sh odoo \
+ && adduser --system --group --home /var/lib/odoo --shell /bin/bash odoo \
  && pg_ctlcluster 9.3 main start && su - postgres -c "createuser -d odoo" \
  && wget -nv -O- https://github.com/odoo/odoo/archive/master.tar.gz \
-  | tar xz -C /opt && mv /opt/odoo-master /opt/odoo \
- && ln -s setup/setup.py /opt/odoo && pip install -e /opt/odoo \
- && echo H4sIACwkhVMCA+2XXW+bMBiFueZXoF4nGBM+tEi5qLSuq7QlUqtpF1OFKLjUWrCZDam0X \
- 7/XtDQ0omovEtpo73MRwzFWDMfHHy6xDo7neX4chqakcej1yw6L+rOA+jSKAh/0yKex5YTWEdG9SF \
- ceCS6RuZRkLP+ffaIh/2eB0WPqe+j/iP6bn6lmasOUm0lxu/dPEwXBi/7TONj678M4gYswshwL/T8 \
- 4v2RVcyn0tZ3mOZRJldZ3zsIhoD8OjYoJpiryUD/ZVjwI0K7kApppfZ9Dw/bWXssiuUtFvmYKtPnF \
- 8stqcs/U77+sKeY/Ty+XF8tz20I+QP51U0HuuZaKHC4ab53/w9ijkH8vgALn/7H9NzO/m5P389/3P \
- bP/ozSE5QL9fyf/K6nrQjH9Z72fvcBr63/oRdv8R8b/IITjAa7/Y6z/lZKFSsv51vRrO5NlCYu32Q \
- Y0WpE1v+mNCfLJnZEbLp4kZ/rZIZt08Lky5cKZZo4ZR7xIbvmaLQirs6Hndsed3eh299DJdtrUcJm \
- qGsRaNawVoKIvKZZzxbI60XXOlOrkiufmv80bmZ6qRuz0YGp64MJjNjSUTZ3ADqbfAm77Sel1FWqO \
- eCczlH+zu9vnKeC1/Ach7c3/oNOZH8WY/1Hzb0x/lvzdA8Dj8dCkuU3w4Lmxy6zRbSY2XElRMmHi+ \
- ePq7HJxYipOJt9W58vT72fd7deVuX6aQ1pxz2nvdfRtCe+/2XFHHEEQBEEQBEEQBEEQBEGQ/5R/5/ \
- CeYQAoAAA=                                                                    \
+  | tar xz --xform s,^odoo-master,odoo, -C /opt && cd /opt/odoo \
+ && ln -s setup/setup.py && pip install -e . \
+ && echo H4sIAHVqi1MCA+3V32rCMBQG8F73KfoAav9OQfDCC+eErYJj7GJI6dpYy9qmnKQKe/qd \
+ VsecDHYjG8L3u2iaL6S0JCeVqZS25EtfCdoJGiSy2hiX5bBhEHQtO28ddxQYrucH3nDo3Xi+4bie \
+ 440My7gm5x93JV5krXNZqbUZpym3UR3rrTWxbM67fcE3ohJU24fx3tfAIeB5ZV7xNKX2KU/sumYh \
+ s2gbV2khiLPxIrxd9vaC3t5Fk42fp6twEc5NA/6damqu+1xJstvKH6Td2l72FPit/gPns/7doTPi \
+ 3PXdwEf9/0n91yQzistxu+xrM5FlyWX70wFw/EFY/cSyhU6OY2d/DrNRXcW3uSmqXU6yKkWlOXp6 \
+ nK0mbd67X87D6cPs0Llb8p29i8ku8tfueWbcaKl0TO0sTY3oAhLfIhJpTiLRkdKpIPqMuScbHfHx \
+ s8kL0X5G92SZ2Scb/fSleQjnEAAAAAAAAAAAAAAAAAAAAFy1D6bmcCMAKAAA                 \
   | base64 -di | tar xz -C /etc
 
-# Declare volumes for PostgreSQL data and logs
-VOLUME ["/var/lib/postgresql", "/var/log/postgresql"]
+# Declare volumes for data
+VOLUME ["/var/lib/odoo", "/var/lib/postgresql"]
 
 # Expose HTTP port
 EXPOSE 8069
-
-# Autostart supervisor daemon
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
