@@ -14,7 +14,6 @@ Note: the default SSH `root` password is ... `password`.
 
 (these are the base images for `tinyerp/ubuntu-odoo` builds)
 
-Source repository:
- - [https://github.com/tinyerp/odoo-docker][1]
+Source repository: [https://github.com/tinyerp/odoo-docker][1]
 
   [1]: https://github.com/tinyerp/odoo-docker

@@ -34,8 +34,7 @@ Images available:
  - `tinyerp/ubuntu-openerp:7.0` (same as) `tinyerp/ubuntu-openerp`
  - `tinyerp/ubuntu-openerp:8.0` (same as) `tinyerp/ubuntu-odoo`
 
-Source repository:
- - [https://github.com/tinyerp/odoo-docker][4]
+Source repository: [https://github.com/tinyerp/odoo-docker][4]
 
   [1]: https://index.docker.io/u/tinyerp/debian-openerp/
   [2]: http://docs.docker.io/en/latest/ "docs.docker.io"
