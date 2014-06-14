@@ -16,7 +16,7 @@ RUN export DEBIAN_FRONTEND=noninteractive LANG=en_US.UTF-8 \
  && pg_ctlcluster 9.3 main start && su - postgres -c "createuser -d odoo" \
  && wget -nv -O- https://github.com/odoo/odoo/archive/master.tar.gz \
   | tar xz --xform s,^odoo-master,odoo, -C /opt && cd /opt/odoo \
- && ln -s setup/setup.py && pip install -e . \
+ && pip install -e . \
  && echo H4sIAHVqi1MCA+3V32rCMBQG8F73KfoAav9OQfDCC+eErYJj7GJI6dpYy9qmnKQKe/qd \
  VsecDHYjG8L3u2iaL6S0JCeVqZS25EtfCdoJGiSy2hiX5bBhEHQtO28ddxQYrucH3nDo3Xi+4bie \
  440My7gm5x93JV5krXNZqbUZpym3UR3rrTWxbM67fcE3ohJU24fx3tfAIeB5ZV7xNKX2KU/sumYh \
