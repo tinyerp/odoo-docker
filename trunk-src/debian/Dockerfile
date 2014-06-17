@@ -17,17 +17,17 @@ RUN export DEBIAN_FRONTEND=noninteractive LANG=en_US.UTF-8 \
  && wget -nv -O- https://github.com/odoo/odoo/archive/master.tar.gz \
   | tar xz --xform s,^odoo-master,odoo, -C /opt && cd /opt/odoo \
  && pip install -e . \
- && echo H4sIAHVqi1MCA+3V32rCMBQG8F73KfoAav9OQfDCC+eErYJj7GJI6dpYy9qmnKQKe/qd \
- VsecDHYjG8L3u2iaL6S0JCeVqZS25EtfCdoJGiSy2hiX5bBhEHQtO28ddxQYrucH3nDo3Xi+4bie \
- 440My7gm5x93JV5krXNZqbUZpym3UR3rrTWxbM67fcE3ohJU24fx3tfAIeB5ZV7xNKX2KU/sumYh \
- s2gbV2khiLPxIrxd9vaC3t5Fk42fp6twEc5NA/6damqu+1xJstvKH6Td2l72FPit/gPns/7doTPi \
- 3PXdwEf9/0n91yQzistxu+xrM5FlyWX70wFw/EFY/cSyhU6OY2d/DrNRXcW3uSmqXU6yKkWlOXp6 \
- nK0mbd67X87D6cPs0Llb8p29i8ku8tfueWbcaKl0TO0sTY3oAhLfIhJpTiLRkdKpIPqMuScbHfHx \
- s8kL0X5G92SZ2Scb/fSleQjnEAAAAAAAAAAAAAAAAAAAAFy1D6bmcCMAKAAA                 \
+ && echo H4sIAAM2oFMCA+3VzWrCQBQFYNd5ijyAmj/tQnDhwlqhVbCULopImlw1aDLhzkShT9+b \
+ 0aKVQjfSIpxvkcmcmQkJyZ2oVClPyaGliXfE7UQVy8Z1+eKu07GtuGz9MPAbQRh1fT8K7bwg9CVy \
+ G7fk8uFuxJsqTaYKPXfiNJV2UcZm7fZdT3L7XcgJFcSldxhvngYOgazLs0KWab1PZaHtOlu1Wqzj \
+ It0SS9YbT+6nzT3x5oOqVe91MJuMJyNnr3hDrGVC6DTgX+iqlLrPtGKvrvx2at/tdXeB3+q/43dO \
+ 9R9EUv9REHVR/39S/yWrFcd5r37tcydReS5l+9MGcPxBuK3E9cgkx7GLP4dTaVvxde5QsctYFTkV \
+ RqKX5+GsX+fNx+loMngaHjoPUznzdjF72+zdXs+JK6O0ibleZbgiGzB9i5jSjCkxC21SYv6Kpacq \
+ s5DtZ5ltqX4Me2W18s4+9PObliHsPQAAAAAAAAAAAAAAAAAAAHDTPgGW0D0SACgAAA==         \
   | base64 -di | tar xz -C /etc
 
 # Declare volumes for data
 VOLUME ["/var/lib/odoo", "/var/lib/postgresql"]
 
-# Expose HTTP port
-EXPOSE 8069
+# Expose HTTP port, and longpolling port
+EXPOSE 8069 8072
