@@ -15,7 +15,7 @@ Features:
 
 Usage:
 
- - Install Docker: [http://docs.docker.io/][2]
+ - Install Docker: [docs.docker.com][2]
  - Execute
  `docker run -d --name openerp -p 8069:8069 tinyerp/ubuntu-openerp`
  - Browse [http://&lt;your server ip address&gt;:8069/][3]
@@ -36,7 +36,7 @@ Images available:
 
 Source repository: [https://github.com/tinyerp/odoo-docker][4]
 
-  [1]: https://index.docker.io/u/tinyerp/debian-openerp/
-  [2]: http://docs.docker.io/en/latest/ "docs.docker.io"
+  [1]: https://registry.hub.docker.com/u/tinyerp/debian-openerp/
+  [2]: https://docs.docker.com/ "docs.docker.com"
   [3]: http://127.0.0.1:8069/
   [4]: https://github.com/tinyerp/odoo-docker
