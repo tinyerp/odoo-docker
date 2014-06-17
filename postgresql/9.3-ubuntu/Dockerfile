@@ -15,7 +15,7 @@ RUN apt-key adv --keyserver pool.sks-keyservers.net \
  && ln -s /bin/true /usr/bin/ischroot \
  && export DEBIAN_FRONTEND=noninteractive LANG && apt-get update \
  && apt-get install -y --no-install-recommends dropbear language-pack-en \
-    supervisor && echo "root:password" | chpasswd \
+    rsync supervisor && echo "root:password" | chpasswd \
  && update-locale LANG=en_US.UTF-8 && . /etc/default/locale \
  && apt-get install -y postgresql-9.3 postgresql-contrib-9.3 \
  && echo H4sIAFhni1MCA+3U22qEMBAGYK99Cl9gjadaurB3fYtSxENWAmrsmCz07Tva1e3aQi+K \

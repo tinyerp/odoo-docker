@@ -16,7 +16,7 @@ RUN echo deb http://http.debian.net/debian jessie main contrib non-free \
  && /bin/rm /etc/apt/sources.list && echo en_US.UTF-8 UTF-8 > /etc/locale.gen \
  && export DEBIAN_FRONTEND=noninteractive LANG && apt-get update \
  && apt-get install -y --no-install-recommends apt-utils dropbear locales \
-    logrotate supervisor && echo "root:password" | chpasswd \
+    logrotate rsync supervisor && echo "root:password" | chpasswd \
  && update-locale LANG=en_US.UTF-8 && . /etc/default/locale \
  && apt-get install -yt experimental postgresql-9.4 postgresql-contrib-9.4 \
  && echo H4sIADcyi1MCA+3UXWqEMBAHcJ89hRdYEzUILexbb1GK+JGVgBp3kiz09o12Xbu20Iey \

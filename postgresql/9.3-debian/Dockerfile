@@ -15,7 +15,7 @@ RUN apt-key adv --keyserver pool.sks-keyservers.net \
  && /bin/rm /etc/apt/sources.list && echo en_US.UTF-8 UTF-8 > /etc/locale.gen \
  && export DEBIAN_FRONTEND=noninteractive LANG && apt-get update \
  && apt-get install -y --no-install-recommends apt-utils dropbear locales \
-    logrotate supervisor && echo "root:password" | chpasswd \
+    logrotate rsync supervisor && echo "root:password" | chpasswd \
  && update-locale LANG=en_US.UTF-8 && . /etc/default/locale \
  && apt-get install -y postgresql-9.3 postgresql-contrib-9.3 \
  && echo H4sIAFhni1MCA+3U22qEMBAGYK99Cl9gjadaurB3fYtSxENWAmrsmCz07Tva1e3aQi+K \

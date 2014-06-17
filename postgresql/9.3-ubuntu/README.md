@@ -5,7 +5,7 @@ Base image is Ubuntu 14.04 LTS (Trusty Tahr)
 
 Content:
 
-* Install Dropbear SSH Server
+* Install Dropbear SSH Server and the rsync utility
 * Install PostgreSQL 9.3
 * Install Supervisor
 * Run SSH server and PostgreSQL server on startup
