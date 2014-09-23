@@ -1,13 +1,13 @@
-Run OpenERP on Debian - June 2014
----------------------------------
+Run OpenERP on Debian - September 2014
+--------------------------------------
 
-*Built with Docker 0.11.1*
+*Built with Docker 1.2.0*
 
 Features:
 
  - Debian Jessie
- - PostgreSQL 9.3
- - OpenERP 7.0 (or trunk)
+ - PostgreSQL 9.3 or 9.4
+ - OpenERP 7.0 or 8.0
  - SSH server
  - Supervisor
 

@@ -9,15 +9,16 @@ Built images are uploaded to [hub.docker.com][1]
 
 Main images:
 
+ - Odoo trunk on Debian/Ubuntu (./trunk-src/)
+ - Odoo 8.0 on Debian/Ubuntu (./8.0/)
  - OpenERP 7.0 on Debian/Ubuntu (./7.0/)
  - OpenERP 6.1 on Debian only (./6.1/)
- - Odoo trunk on Debian/Ubuntu (./trunk-src/)
 
 
 PostgreSQL images:
 
  - PostgreSQL 9.3 on Debian/Ubuntu (./postgresql/)
- - PostgreSQL 9.4 beta on Debian (./postgresql/)
+ - PostgreSQL 9.4 beta on Debian/Ubuntu (./postgresql/)
 
 
 Usage:
