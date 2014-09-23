@@ -1,4 +1,4 @@
-# DOCKER-VERSION 0.11.1
+# DOCKER-VERSION 1.2.0
 # TO tinyerp/ubuntu-openerp:7.0
 FROM tinyerp/ubuntu-postgresql:9.3
 
