@@ -1,24 +1,23 @@
-# DOCKER-VERSION 0.11.1
+# DOCKER-VERSION 1.2.0
 # TO tinyerp/debian-postgresql:9.4
 FROM debian:jessie
 
 MAINTAINER Florent Xicluna, @florentxicluna
 
-# PostgreSQL 9.4 beta1 on Debian/Ubuntu
-#   http://www.postgresql.org/about/news/1524/
-
 # Install PostgreSQL and Dropbear (SSH server)
 # Untar configuration "/etc/supervisor/conf.d/"
-RUN echo deb http://http.debian.net/debian jessie main contrib non-free \
+RUN apt-key adv --keyserver pool.sks-keyservers.net \
+    --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 \
+ && echo deb http://http.debian.net/debian jessie main contrib non-free \
     > /etc/apt/sources.list.d/debian-jessie.list \
- && echo deb http://http.debian.net/debian experimental main contrib \
-    > /etc/apt/sources.list.d/debian-experimental.list \
+ && echo deb http://apt.postgresql.org/pub/repos/apt/ sid-pgdg main \
+    > /etc/apt/sources.list.d/pgdg.list \
  && /bin/rm /etc/apt/sources.list && echo en_US.UTF-8 UTF-8 > /etc/locale.gen \
  && export DEBIAN_FRONTEND=noninteractive LANG && apt-get update \
  && apt-get install -y --no-install-recommends apt-utils dropbear locales \
     logrotate rsync supervisor && echo "root:password" | chpasswd \
  && update-locale LANG=en_US.UTF-8 && . /etc/default/locale \
- && apt-get install -yt experimental postgresql-9.4 postgresql-contrib-9.4 \
+ && apt-get install -y postgresql-9.4 postgresql-contrib-9.4 \
  && echo H4sIADcyi1MCA+3UXWqEMBAHcJ89hRdYEzUILexbb1GK+JGVgBp3kiz09o12Xbu20Iey \
  BeH/ewmZBAfJzDSkx0qWFNd6OAWPwb1ciHn1tivPeBokaSbSPBEizQKecMHzIAr2ZPtzO/E6km6p \
  7J+bayG8hbXu+3JoomPEpK3ZcsDIDWGjSNZW0/v2NHRGkg+S1jYsndXGlmR9wJKTc4DkXYjk57cK \

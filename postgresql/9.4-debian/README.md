@@ -1,5 +1,5 @@
-Run PostgreSQL 9.3/9.4 on Debian - June 2014
---------------------------------------------
+Run PostgreSQL 9.3/9.4 on Debian - September 2014
+-------------------------------------------------
 
 Base image is Debian Jessie
 

@@ -1,4 +1,4 @@
-# DOCKER-VERSION 0.11.1
+# DOCKER-VERSION 1.2.0
 # TO tinyerp/ubuntu-postgresql:9.3
 FROM ubuntu:14.04
 
